@@ -1,0 +1,35 @@
+[flake8]
+# Set the maximum line length
+max-line-length = 80
+
+# Exclude directories and files
+exclude =
+    .git,
+    __pycache__,
+    .venv,
+    venv,
+    env,
+    .mypy_cache,
+    .pytest_cache,
+    .tox,
+    build,
+    dist,
+    migrations,
+    node_modules,
+    *.pyc,
+    *.pyo,
+    *.pyd,
+    *.egg-info,
+    .eggs,
+    .vscode,
+    .idea,
+    .DS_Store
+
+# Set the maximum complexity for functions
+max-complexity = 10
+
+# Count the number of errors and warnings
+count = True
+
+# Show the source code for each error
+show-source = True
