@@ -110,6 +110,10 @@ dist/** linguist-generated
 build/** linguist-generated
 coverage/** linguist-generated
 
+.gitattributes export-ignore
+.gitignore     export-ignore
+.gitkeep       export-ignore
+
 # -----------------------------------
 # Custom Merge Strategies (Optional)
 # -----------------------------------
