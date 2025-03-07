@@ -1,0 +1,124 @@
+# -----------------------------------
+# Line Endings Normalization
+# -----------------------------------
+# Ensure all text files use LF (Unix-style) line endings in the repository
+# Git will automatically handle conversions for developers' local environments
+* text=auto eol=lf
+
+# Explicitly set line endings for specific text file types to avoid misidentification
+# Frontend files (Next.js, JavaScript, TypeScript, GraphQL)
+*.js text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.jsx text eol=lf
+*.graphql text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+
+# Backend files (FastAPI, Python)
+*.py text eol=lf
+
+# Configuration and documentation files
+*.json text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.ini text eol=lf
+*.conf text eol=lf
+
+# Infrastructure and scripts
+*.dockerfile text eol=lf
+*.sh text eol=lf
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
+*.exe filter=lfs diff=lfs merge=lfs -tex
+
+# -----------------------------------
+# Lockfiles (Treat as Binary to Prevent Merge Conflicts)
+# -----------------------------------
+# Lockfiles are frequently updated and prone to merge conflicts
+# Treating them as binary forces developers to regenerate them during conflicts
+package-lock.json binary
+yarn.lock binary
+poetry.lock binary
+Pipfile.lock binary
+
+# -----------------------------------
+# Binary Files (No Diff, No Merge)
+# -----------------------------------
+# Files that should not be diffed or merged by Git
+# Media files (used in Media Service)
+*.gif filter=lfs diff=lfs merge=lfs -text
+*.ico filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.pdf filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
+*.psd filter=lfs diff=lfs merge=lfs -text
+*.webp filter=lfs diff=lfs merge=lfs -text
+
+# Fonts (used in Next.js frontend with Tailwind CSS)
+*.woff filter=lfs diff=lfs merge=lfs -text
+*.woff2 filter=lfs diff=lfs merge=lfs -text
+*.ttf filter=lfs diff=lfs merge=lfs -text
+*.eot filter=lfs diff=lfs merge=lfs -text
+
+# Archives and compressed files
+*.zip binary
+*.tar binary
+*.gz binary
+
+# Compiled Python files (FastAPI services)
+*.pyc binary
+*.pyo binary
+
+# Database files (PostgreSQL, local testing)
+*.db binary
+*.sqlite binary
+
+# PyTorch model files (used in AI Service for recommendation system)
+*.pt binary
+*.pth binary
+
+# Elasticsearch mapping files (used in Search Service)
+*.mapping binary
+
+# -----------------------------------
+# Language Detection for GitHub Stats
+# -----------------------------------
+# Ensure GitHub correctly identifies languages for syntax highlighting and stats
+*.py linguist-language=Python
+*.js linguist-language=JavaScript
+*.ts linguist-language=TypeScript
+*.tsx linguist-language=TypeScript
+*.jsx linguist-language=JavaScript
+*.graphql linguist-language=GraphQL
+*.dockerfile linguist-language=Dockerfile
+*.css linguist-language=CSS
+*.html linguist-language=HTML
+*.md linguist-language=Markdown
+*.yaml linguist-language=YAML
+*.yml linguist-language=YAML
+
+# -----------------------------------
+# Vendored and Generated Files for GitHub Stats
+# -----------------------------------
+# Mark vendored dependencies and generated files to exclude them from stats
+vendor/** linguist-vendored
+node_modules/** linguist-vendored
+dist/** linguist-generated
+build/** linguist-generated
+coverage/** linguist-generated
+
+# -----------------------------------
+# Custom Merge Strategies (Optional)
+# -----------------------------------
+# Use "ours" merge strategy for specific config files to avoid conflicts
+# Example: config.json merge=ours
+
+# -----------------------------------
+# Git LFS for Large Files (Optional)
+# -----------------------------------
+# Uncomment if you use Git LFS for large media files in the Media Service
+# *.mp4 filter=lfs diff=lfs merge=lfs -text
+# *.zip filter=lfs diff=lfs merge=lfs -text
