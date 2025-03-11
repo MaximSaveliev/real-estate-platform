@@ -1,6 +1,5 @@
 @import "tailwindcss";
-@config "../hero_ui.ts";
-@source "../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}";
+@config "../tailwind.config.mjs";
 
 @plugin "tailwindcss-animate";
 
