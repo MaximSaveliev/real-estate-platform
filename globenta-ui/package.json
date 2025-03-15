@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroui/react": "^2.7.6-beta.2",
+    "@radix-ui/react-slot": "^1.1.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.4.11",
