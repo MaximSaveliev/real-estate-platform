@@ -1,9 +1,21 @@
-import redis
-from config.settings import settings
+import redis.asyncio as redis
+from config.settings import get_settings
+from typing import Optional
 
-redis_client = redis.Redis(
-    host=settings.REDIS_HOST,
-    port=settings.REDIS_PORT,
-    db=settings.REDIS_DB_INDEX,
-    password=settings.REDIS_PASS  # Match Docker Compose password
-)
+settings = get_settings()
+
+class RedisService:
+    def __init__(self):
+        self.client = redis.Redis.from_url(settings.REDIS_URL, decode_responses=True)
+
+    async def get(self, key: str) -> Optional[str]:
+        return await self.client.get(key)
+
+    async def set(self, key: str, value: str, ex: int = None):
+        await self.client.set(key, value, ex=ex)
+
+    async def delete(self, key: str):
+        await self.client.delete(key)
+
+    async def close(self):
+        await self.client.close()
